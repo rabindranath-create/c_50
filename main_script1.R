@@ -279,3 +279,38 @@ for (i in 1:100) {
 }
 
 saveRDS(results_4, file.path(output_dir, "data_50_1_4.rds"))
+
+
+
+# Combine all results into one table
+results <- rbind(results_0, results_05, results_1, results_15,
+                 results_2, results_25, results_3, results_35, results_4)
+
+# Format output
+results_out <- data.frame(
+  Index = paste0('"', 1:nrow(results), '"'),  # Quoted index
+  results[, c("Lambda", "Length", "Cost", "NumDisambigs")]  # Make sure column names match
+)
+
+# Define the custom header (space-separated, quoted)
+header <- '"lambda" "length" "cost" "number_of_disambiguations"'
+
+# Define output path
+txt_path <- file.path(output_dir, "results_ACS1_clutter.txt")
+
+# Write header manually
+writeLines(header, txt_path)
+
+# Append data
+write.table(
+  results_out,
+  file = txt_path,
+  append = TRUE,
+  row.names = FALSE,
+  col.names = FALSE,
+  quote = FALSE,
+  sep = " "
+)
+
+cat("✅ Text results saved to:", txt_path, "\n")
+
