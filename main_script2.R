@@ -4,7 +4,7 @@
 print(getwd())
 
 
-dir.create("outputs/script2", recursive = TRUE)
+dir.create("outputs/script2", recursive = TRUE, showWarnings = FALSE)
 # Load the helper script
 source("RD_and_DT_Algorithm_copy.R")  # Ensure this file is in the same directory
 
