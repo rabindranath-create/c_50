@@ -296,7 +296,7 @@ results_out <- data.frame(
 header <- '"lambda" "length" "cost" "number_of_disambiguations"'
 
 # Define output path
-txt_path <- file.path(output_dir, "results_ACS1_clutter.txt")
+txt_path <- file.path(output_dir, "results_ACS2_clutter.txt")
 
 # Write header manually
 writeLines(header, txt_path)
